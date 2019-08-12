@@ -43,7 +43,8 @@ class CRNN():
                                              self.RNN_FC_dim, self.dropout_p, self.k).to(device)
 
     def load(self):
-        save_model_path = '/home/emad/PycharmProjects/video_classification_sample/cached'
+        project_path = os.getcwd()
+        save_model_path = project_path + '/cached'
         self.encoder.load_state_dict(
             torch.load(os.path.join(save_model_path, 'cnn_encoder_epoch63_singleGPU.pth'), map_location='cpu'))
         self.decoder.load_state_dict(
